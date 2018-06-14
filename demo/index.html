@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>DB Storage</title>
+</head>
+  <p>请打开开发者工具逐行注释查看结果</p>
+<body>
+  <script src="../dist/bundle.js"></script>
+  <script>
+    window.onload = () => {
+      // 设置检测
+      DB.session.set('a', [1, 2, 3]);
+      DB.session.set('b', [{ a: '1' }, { b: '2' }]);
+      DB.session.set('c', { a: '1', b: '2' });
+      DB.session.set('d', 1);
+      DB.session.set('e', 'a');
+      DB.session.set('f', undefined);
+      DB.session.set('g', null);
+
+      // 获取检测
+      console.log(DB.session.get('a'));
+      console.log(DB.session.get('b'));
+      console.log(DB.session.get('c'));
+      console.log(DB.session.get('d'));
+      console.log(DB.session.get('e'));
+      console.log(DB.session.get('f'));
+      console.log(DB.session.get('g'));
+      console.log(DB.session.get(['a', 'b', 'c', 'd', 'e', 'f', 'g']));
+
+      // 合并检测
+      DB.session.merge('a', [4, 5]);
+      DB.session.merge('b', [{ c: '3' }, { b: '4' }]);
+      DB.session.merge('c', { a: "3", c: "5" });
+      DB.session.merge('d', 2);
+
+      //  删除清空检测
+      // DB.session.del('g');
+      // DB.session.del(['b','c','d']);
+      // DB.session.clear()
+
+      // local
+      DB.local.set('a', [1, 2, 3]);
+      DB.local.set('b', [{ a: '1' }, { b: '2' }]);
+      DB.local.set('c', { a: '1', b: '2' });
+      DB.local.set('d', 1);
+      DB.local.set('e', 'a');
+      DB.local.set('f', undefined);
+      DB.local.set('g', null);
+    }
+  </script>
+</body>
+
+</html>
